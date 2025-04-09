@@ -13,6 +13,11 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
+      - IDENTITY_SERVICE_URL=http://identity-service:4001
+      - USER_SERVICE_URL=http://user-service:4002
+      - LICENSE_SERVICE_URL=http://license-service:4003
+      - ROOM_SERVICE_URL=http://room-service:4004
+      - SOCKET_SERVICE_URL=http://socket-service:4005
 
   identity-service:
     build: ./identity-service
