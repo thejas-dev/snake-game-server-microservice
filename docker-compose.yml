@@ -1,8 +1,20 @@
 version: "3.8"
 
 services:
+  frontend:
+    build: ./frontend
+    image: thejashari/snake-game-frontend:v1.0.0
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+    environment:
+      - NEXT_PUBLIC_SOCKET_SERVER_BASE=http://localhost:4005
+      - NEXT_PUBLIC_SERVER_API_GATEWAY=http://localhost:4000
+
   api-gateway:
     build: ./api-gateway
+    image: thejashari/snake-game-api-gateway:v1.0.0
     ports:
       - "4000:4000"
     env_file:
@@ -21,6 +33,7 @@ services:
 
   identity-service:
     build: ./identity-service
+    image: thejashari/snake-game-identity-service:v1.0.0
     ports:
       - "4001:4001"
     env_file:
@@ -34,6 +47,7 @@ services:
 
   user-service:
     build: ./user-service
+    image: thejashari/snake-game-user-service:v1.0.0
     ports:
       - "4002:4002"
     env_file:
@@ -47,6 +61,7 @@ services:
 
   license-service:
     build: ./license-service
+    image: thejashari/snake-game-license-service:v1.0.0
     ports:
       - "4003:4003"
     env_file:
@@ -60,6 +75,7 @@ services:
 
   room-service:
     build: ./room-service
+    image: thejashari/snake-game-room-service:v1.0.0
     ports:
       - "4004:4004"
     env_file:
@@ -73,6 +89,7 @@ services:
 
   socket-service:
     build: ./socket-service
+    image: thejashari/snake-game-socket-service:v1.0.0
     ports:
       - "4005:4005"
     env_file:
